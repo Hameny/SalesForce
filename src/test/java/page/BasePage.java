@@ -19,6 +19,9 @@ public class BasePage {
     wait = new WebDriverWait(driver, Duration.ofSeconds(20));
   }
 
+  public BasePage() {
+  }
+
   public void clickJs(WebElement element) {
     JavascriptExecutor js = (JavascriptExecutor) driver;
     js.executeScript("argument[0].click;", element);

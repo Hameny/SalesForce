@@ -1,6 +1,8 @@
 package test;
 
-import static utils.AllureUtils.takeScreenshot;
+//import static utils.AllureUtils.takeScreenshot;
+
+import static test.AllureUtils.takeScreenshot;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -15,19 +17,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import pages.CartPage;
-import pages.CheckoutPage;
-import pages.LoginPage;
-import pages.ProductsPage;
+import page.NewAccountModal;
+
 
 @Listeners(TestListener.class)
 public class BaseTest {
 
   WebDriver driver;
-  LoginPage loginPage;
-  ProductsPage productsPage;
-  CheckoutPage checkoutPage;
-  CartPage cartPage;
+  NewAccountModal newAccountModal;
+
 
   @Parameters({"browser"})
   @BeforeMethod(alwaysRun = true, description = "Настройка драйвера")
@@ -42,7 +40,7 @@ public class BaseTest {
       options.addArguments("--disable-notifications");
       options.addArguments("--disable-popup-blocking");
       options.addArguments("--disable-infobars");
-      options.addArguments("--headless");
+      //options.addArguments("--headless");
       driver = new ChromeDriver(options);
     } else if (browser.equalsIgnoreCase("Safari")) {
       SafariOptions options = new SafariOptions();
@@ -52,11 +50,11 @@ public class BaseTest {
     }
 
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-
-    loginPage = new LoginPage(driver);
-    productsPage = new ProductsPage(driver);
-    checkoutPage = new CheckoutPage(driver);
-    cartPage = new CartPage(driver);
+    newAccountModal = new NewAccountModal(driver);
+//    loginPage = new LoginPage(driver);
+//    productsPage = new ProductsPage(driver);
+//    checkoutPage = new CheckoutPage(driver);
+//    cartPage = new CartPage(driver);
   }
 
   @AfterMethod(alwaysRun = true)
