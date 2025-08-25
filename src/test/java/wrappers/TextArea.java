@@ -13,8 +13,7 @@ public class TextArea {
   }
 
   public void writeTextArea(String text) {
-    driver.findElement(
-            By.xpath(String.format("//label[text()='$s']//ancestor::lightning-input//input")))
+    driver.findElement(By.xpath(String.format("//label[text()='%s']//ancestor::lightning-textarea//textarea",label)))
         .sendKeys(text);
   }
 }

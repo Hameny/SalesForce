@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Sales Force CrossBrowser" thread-count="2" parallel="tests">
+  <test name="Chrome">
+    <groups>
+      <run>
+        <exclude name="Regression"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="test.AccountTest">
+        <parameter name="browser" value="chrome">
+        </parameter>
+      </class>
+      <class name="test.AccountTest"/>
+    </classes>
+  </test>
+  <test name="Safari">
+    <classes>
+      <class name="test.AccountTest"/>
+      <parameter name="browser" value="Safari">
+      </parameter>
+    </classes>
+  </test>
+</suite>

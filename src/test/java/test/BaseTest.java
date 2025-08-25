@@ -17,6 +17,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import org.testng.asserts.SoftAssert;
+import page.AccountPage;
+import page.LoginPage;
+import page.MainPage;
 import page.NewAccountModal;
 
 
@@ -25,7 +29,10 @@ public class BaseTest {
 
   WebDriver driver;
   NewAccountModal newAccountModal;
-
+  LoginPage loginPage;
+  AccountPage accountPage;
+  MainPage mainPage;
+  SoftAssert softAssert;
 
   @Parameters({"browser"})
   @BeforeMethod(alwaysRun = true, description = "Настройка драйвера")
@@ -50,11 +57,13 @@ public class BaseTest {
     }
 
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
     newAccountModal = new NewAccountModal(driver);
-//    loginPage = new LoginPage(driver);
-//    productsPage = new ProductsPage(driver);
-//    checkoutPage = new CheckoutPage(driver);
-//    cartPage = new CartPage(driver);
+    softAssert = new SoftAssert();
+    loginPage = new LoginPage(driver);
+    newAccountModal = new NewAccountModal(driver);
+    accountPage = new AccountPage(driver);
+    mainPage = new MainPage(driver);
   }
 
   @AfterMethod(alwaysRun = true)

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="Smoke test Sales Force" parallel="tests">
+  <test name="Thread1">
+    <classes>
+      <class name="test.AccountTest"/>
+    </classes>
+  </test> <!-- Test -->
+  <test name="Thread2">
+    <classes>
+      <class name="test.AccountTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite>
