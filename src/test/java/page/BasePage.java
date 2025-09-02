@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BasePage {
+public abstract class BasePage {
 
   final String BASE_URL = "https://tms9-dev-ed.develop.lightning.force.com/";
   final String MAIN_URL = BASE_URL + "lightning/setup/SetupOneHome/home";
@@ -20,9 +20,9 @@ public class BasePage {
     wait = new WebDriverWait(driver, Duration.ofSeconds(20));
   }
 
-  public void open(){
-    driver.get(BASE_URL);
-  }
+  public abstract BasePage open();
+
+  public abstract BasePage isPageOpened();
 
   public void clickJs(WebElement element) {
     JavascriptExecutor js = (JavascriptExecutor) driver;

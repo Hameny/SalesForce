@@ -22,6 +22,8 @@ import page.AccountPage;
 import page.LoginPage;
 import page.MainPage;
 import page.NewAccountModal;
+import steps.AccountStep;
+import steps.LoginStep;
 
 
 @Listeners(TestListener.class)
@@ -33,6 +35,8 @@ public class BaseTest {
   AccountPage accountPage;
   MainPage mainPage;
   SoftAssert softAssert;
+  LoginStep loginStep;
+  AccountStep accountStep;
 
   @Parameters({"browser"})
   @BeforeMethod(alwaysRun = true, description = "Настройка драйвера")
@@ -64,6 +68,8 @@ public class BaseTest {
     newAccountModal = new NewAccountModal(driver);
     accountPage = new AccountPage(driver);
     mainPage = new MainPage(driver);
+    accountStep = new AccountStep(driver);
+    loginStep = new LoginStep(driver);
   }
 
   @AfterMethod(alwaysRun = true)
